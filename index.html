@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Для тебя ❤️</title>
+    <style>
+    body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fff0f3;
+            position: fixed; /* Намертво блокирует страницу на экране телефона */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden; /* Запрещает любой скролл и верчение */
+            touch-action: none; /* Запрещает телефону зумить и двигать экран пальцами */
+        }
+    body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fff0f3;
+            position: fixed; /* Намертво блокирует страницу на экране телефона */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden; /* Запрещает любой скролл и верчение */
+            touch-action: none; /* Запрещает телефону зумить и двигать экран пальцами */
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* === ВОТ ЗДЕСЬ ИСПРАВЛЕННЫЙ CSS ДЛЯ БОДИ === */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fff0f3;
+            min-height: 100vh; 
+            min-height: 100dvh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* === ИСПРАВЛЕННЫЕ КОНТЕЙНЕРЫ (ТЕПЕРЬ ОНИ НЕ БЛОКИРУЮТ КЛИКИ) === */
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cell {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ВСЕ ОСТАЛЬНЫЕ ТВОИ СТИЛИ ОСТАЛИСЬ БЕЗ ИЗМЕНЕНИЙ */
+        .card {
+            background: white;
+            padding: 30px 24px;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(255, 77, 109, 0.15);
+            max-width: 360px;
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            animation: fadeIn 0.4s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        h1 {
+            color: #ff4d6d;
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        p {
+            color: #4a4a4a;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        b {
+            color: #ff4d6d;
+        }
+        .btn-container {
+            display: block;
+            margin-top: 15px;
+        }
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.98);
+            background-color: #ff758f;
+        }
+        .btn-no {
+            background-color: #8d99ae;
+            box-shadow: 0 4px 10px rgba(141, 153, 174, 0.3);
+        }
+        .btn-no:active {
+            background-color: #a3b1c6;
+        }
+        .hidden {
+            display: none !important;
+        }
+        #memeZone {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ffb6c1;
+            animation: shake 0.3s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        .error-text {
+            color: #d90429;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+        .meme-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 14px;
+            border: 2px solid #ff4d6d;
+        }
+        .heart-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="cell">
+
+            <div id="screen1" class="card">
+                <div class="heart-icon">🔒</div>
+                <h1>Привет! ❤️</h1>
+                <p>Я кое-что приготовил специально для тебя. Нажми на кнопку ниже, чтобы зайти.</p>
+                <button onclick="showScreen(2)">Войти</button>
+            </div>
+
+            <div id="screen2" class="card hidden">
+                <div class="heart-icon">✨</div>
+                <h1>Кое-что важное...</h1>
+                <p>Я безумно люблю твою милую улыбку. Особенно в те моменты, когда <b>ты меня щекочешь</b>! Я хоть и ворчу, пытаюсь спастись, но на самом деле безума от того, какая ты милая и как искренне смеешься.</p>
+                <p>Ты мне очень сильно нравишься</p>
+                <button onclick="showScreen(3)">Дальше ❤️</button>
+            </div>
+
+            <div id="screen3" class="card hidden">
+                <div class="heart-icon">🌹</div>
+                <h1>Главный вопрос</h1>
+                <p>Ты будешь моей девушкой? Давай встречаться?</p>
+                
+                <div class="btn-container">
+                    <button onclick="showScreen(4)">ДА! 💖</button>
+                    <button class="btn-no" onclick="showMeme()">Нет 😢</button>
+                </div>
+                
+                <div id="memeZone" class="hidden">
+                    <p class="error-text">❌ СИСТЕМНАЯ ОШИБКА:<br>Выбран неверный ответ! Попробуй еще раз.</p>
+                    <img class="meme-img" src="https://media.tenor.com/8m9X6_A_1_oAAAAM/wrong-answer-not-the-right-answer.gif" alt="Wrong answer meme">
+                </div>
+            </div>
+
+            <div id="screen4" class="card hidden">
+                <div class="heart-icon">🎉</div>
+                <h1>Урааа! 🥰🍾</h1>
+                <p>Я самый счастливый! Обещаю делать тебя счастливой каждый день и дарить миллион поводов для твоей крутой улыбки.</p>
+                <p>(И так уж и быть, обещаю мужественно терпеть твою щекотку!) ❤️❤️❤️</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function showScreen(num) {
+            document.getElementById('screen1').classList.add('hidden');
+            document.getElementById('screen2').classList.add('hidden');
+            document.getElementById('screen3').classList.add('hidden');
+            document.getElementById('screen4').classList.add('hidden');
+            
+            document.getElementById('screen' + num).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showMeme() {
+            const meme = document.getElementById('memeZone');
+            meme.classList.remove('hidden');
+            meme.style.animation = 'none';
+            meme.offsetHeight; 
+            meme.style.animation = null;
+        }
+    </script>
+</body>
+</html>
